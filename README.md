@@ -42,4 +42,5 @@ Repository: https://github.com/tambeakash/PlaywrightRobotHybridFramework
 ## Notes
 
 - The `keywords/ecommerce_keywords.py` file adds the project root to `sys.path` so that `core` and `pages` modules import correctly when Robot executes.
-- Playwright is configured to launch Chromium in headed mode; adjust `headless` in `core/browser_manager.py` if desired.
+- By default the browser launches in headed mode locally.  When running on CI (or when the environment variable `HEADLESS` is set to `true`), the framework will start Chromium in headless mode.  You can override this behavior by passing a parameter to `BrowserManager` or setting `HEADLESS`.
+
