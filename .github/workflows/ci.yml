@@ -11,15 +11,24 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Install Python
+    - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.10'
+        python-version: '3.11'
 
-    - name: Install dependencies
+    - name: Install Dependencies
       run: |
         pip install -r requirements.txt
         playwright install
 
-    - name: Run Tests
-      run: robot tests/
+    - name: Run Tests (with Allure + screenshot listener)
+      run: |
+        mkdir -p allure-results
+        # Run Robot with both Allure listener and our screenshot listener
+        robot --listener robotframework_allure.listener --listener listeners/screenshot_listener.py tests/
+
+    - name: Upload Allure results
+      uses: actions/upload-artifact@v3
+      with:
+        name: allure-results
+        path: allure-results

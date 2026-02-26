@@ -35,6 +35,16 @@ robot tests/
 
 You can specify single test files or tags as usual with Robot Framework.
 
+To capture screenshots for every keyword and attach them to Allure/Robot logs, run Robot with the screenshot listener:
+
+```powershell
+# local run (adds screenshot attachments and embeds images in Robot log)
+robot --listener listeners/screenshot_listener.py tests/
+
+# with Allure listener (CI/Allure results)
+robot --listener robotframework_allure.listener --listener listeners/screenshot_listener.py tests/
+```
+
 ## GitHub
 
 Repository: https://github.com/tambeakash/PlaywrightRobotHybridFramework
