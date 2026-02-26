@@ -28,7 +28,7 @@ jobs:
         robot --listener robotframework_allure.listener --listener listeners/screenshot_listener.py tests/
 
     - name: Upload Allure results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: allure-results
         path: allure-results
